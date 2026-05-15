@@ -1,4 +1,8 @@
-# GitHub Pages + Cloudflare Workers KV 个人密钥库
+# Treasure-Trove
+
+A place where treasures gather.
+
+## GitHub Pages + Cloudflare Workers KV 藏宝阁
 
 这是一个单用户、端到端加密的个人密钥库 Demo。前端放在 GitHub Pages，Cloudflare Worker 只负责读写一份加密后的 `vault:state`，KV 和 Worker 都看不到主密钥和明文密钥。
 
