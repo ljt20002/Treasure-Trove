@@ -87,10 +87,10 @@ npm run dev:api:local
 
 ## 部署
 
-1. 修改 `wrangler.jsonc`：
-   - 把 `name` 改成你想要的 Worker 名称。
-   - 把 `ALLOWED_ORIGINS` 里的 `https://YOUR_GITHUB_USERNAME.github.io` 改成你的 GitHub Pages origin。
-   - 保留已有 KV namespace：`bf69a17eac6f4f2284ba78970f29437f`。
+1. 当前 `wrangler.jsonc` 已配置：
+   - Worker 名称：`cangbaoge-api`
+   - GitHub Pages origin：`https://ljt20002.github.io`
+   - KV namespace：`bf69a17eac6f4f2284ba78970f29437f`
 
 2. 推荐设置首次初始化保护：
 
@@ -106,7 +106,7 @@ npx wrangler secret put SETUP_TOKEN
 npm run deploy
 ```
 
-4. GitHub Pages 选择 `docs/` 目录作为发布源。
+4. GitHub Pages 选择 `main` 分支的 `docs/` 目录作为发布源。
 
 5. 打开 GitHub Pages 页面，把 Worker API 地址填成部署后的 Workers 地址，例如：
 

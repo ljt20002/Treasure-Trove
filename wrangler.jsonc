@@ -7,9 +7,8 @@
     "enabled": true
   },
   "vars": {
-    // Replace the GitHub Pages origin before deploying.
-    // CORS checks origins only, so project pages use https://YOUR_GITHUB_USERNAME.github.io.
-    "ALLOWED_ORIGINS": "http://localhost:4173,http://127.0.0.1:4173,https://YOUR_GITHUB_USERNAME.github.io"
+    // CORS checks origins only; project pages use https://ljt20002.github.io.
+    "ALLOWED_ORIGINS": "http://localhost:4173,http://127.0.0.1:4173,https://ljt20002.github.io"
   },
   "kv_namespaces": [
     {
