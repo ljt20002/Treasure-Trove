@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>藏宝阁</title>
+    <link rel="stylesheet" href="./styles.css?v=20260515-top-toast" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>藏宝阁</h1>
+      </div>
+      <div class="topbar-actions">
+        <button id="lockButton" type="button" class="secondary" hidden>锁定</button>
+        <button id="resetVaultButton" type="button" class="danger" hidden>重置系统</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="panel config-panel" aria-labelledby="configTitle">
+        <div class="panel-title">
+          <h2 id="configTitle">连接</h2>
+          <span id="connectionBadge" class="badge">未连接</span>
+        </div>
+        <label class="field">
+          <span>Worker API 地址</span>
+          <input
+            id="apiBaseInput"
+            type="url"
+            placeholder="https://cangbaoge-api.1027900565.workers.dev"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </label>
+        <div class="row-actions">
+          <button id="saveApiBaseButton" type="button" class="secondary">保存地址</button>
+          <button id="connectButton" type="button" class="secondary">连接 API</button>
+        </div>
+      </section>
+
+      <section id="setupPanel" class="panel auth-panel" hidden aria-labelledby="setupTitle">
+        <h2 id="setupTitle">首次初始化</h2>
+        <form id="setupForm" class="stack">
+          <label class="field">
+            <span>主密钥</span>
+            <input id="setupPassword" type="password" autocomplete="new-password" required minlength="12" />
+          </label>
+          <div id="setupPasswordStrength" class="strength-meter" aria-live="polite"></div>
+          <label class="field">
+            <span>确认主密钥</span>
+            <input id="setupPasswordConfirm" type="password" autocomplete="new-password" required minlength="12" />
+          </label>
+          <label class="field">
+            <span>Setup Token</span>
+            <input id="setupToken" type="password" autocomplete="one-time-code" />
+          </label>
+          <button type="submit" class="primary">创建密钥库</button>
+        </form>
+      </section>
+
+      <section id="unlockPanel" class="panel auth-panel" hidden aria-labelledby="unlockTitle">
+        <h2 id="unlockTitle">解锁</h2>
+        <form id="unlockForm" class="stack">
+          <label class="field">
+            <span>主密钥</span>
+            <input id="unlockPassword" type="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit" class="primary">解锁密钥库</button>
+        </form>
+      </section>
+
+      <section id="vaultPanel" class="vault-layout" hidden>
+        <aside class="panel list-panel" aria-labelledby="entriesTitle">
+          <div class="panel-title">
+            <h2 id="entriesTitle">应用</h2>
+            <button id="newEntryButton" type="button" class="primary compact">新增应用</button>
+          </div>
+          <label class="field">
+            <span>搜索</span>
+            <input id="searchInput" type="search" autocomplete="off" />
+          </label>
+          <div id="entriesList" class="entries-list"></div>
+        </aside>
+
+        <section id="editorPanel" class="panel editor-panel" aria-labelledby="editorTitle" hidden>
+          <div class="panel-title">
+            <h2 id="editorTitle">详情</h2>
+            <span id="dirtyBadge" class="badge" hidden>未保存</span>
+          </div>
+          <form id="entryForm" class="editor-grid">
+            <input id="entryId" type="hidden" />
+            <label class="field span-2">
+              <span>应用</span>
+              <input id="entryApp" type="text" autocomplete="off" required />
+            </label>
+            <section class="credentials-section span-2" aria-labelledby="credentialsTitle">
+              <div class="subsection-title">
+                <h3 id="credentialsTitle">账户密码</h3>
+                <button id="addCredentialButton" type="button" class="secondary compact">添加账户</button>
+              </div>
+              <div id="credentialsList" class="credentials-list"></div>
+            </section>
+            <div class="span-2 editor-actions">
+              <button id="saveEntryButton" type="submit" class="primary save-action">保存</button>
+              <button id="deleteEntryButton" type="button" class="danger delete-app-action">删除应用</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <div id="resetDialog" class="modal-backdrop" hidden>
+      <section class="modal panel" role="dialog" aria-modal="true" aria-labelledby="resetTitle">
+        <h2 id="resetTitle">重置系统</h2>
+        <div class="warning-box">
+          这个操作会清空所有密钥，并用新的主密钥重新初始化密钥库。旧主密钥和旧写入凭证会失效，清空后的数据无法恢复。
+        </div>
+        <form id="resetForm" class="stack">
+          <label class="field">
+            <span>确认文本</span>
+            <input id="resetConfirmText" type="text" autocomplete="off" placeholder="输入 RESET" required />
+          </label>
+          <label class="field">
+            <span>新主密钥</span>
+            <input id="resetPassword" type="password" autocomplete="new-password" required minlength="12" />
+          </label>
+          <div id="resetPasswordStrength" class="strength-meter" aria-live="polite"></div>
+          <label class="field">
+            <span>确认新主密钥</span>
+            <input id="resetPasswordConfirm" type="password" autocomplete="new-password" required minlength="12" />
+          </label>
+          <div class="modal-actions">
+            <button id="cancelResetButton" type="button" class="secondary">取消</button>
+            <button type="submit" class="danger">确认清空并更换主密钥</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="./app.js?v=20260515-add-account-draft" defer></script>
+  </body>
+</html>

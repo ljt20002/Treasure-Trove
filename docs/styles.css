@@ -1,0 +1,520 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #18212f;
+  --muted: #647084;
+  --line: #d8dee8;
+  --primary: #0f766e;
+  --primary-strong: #115e59;
+  --accent: #2563eb;
+  --danger: #b42318;
+  --warning: #9a5b13;
+  --shadow: 0 14px 38px rgb(24 33 47 / 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-height: 40px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 14px;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--primary-strong);
+}
+
+.secondary {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: #aeb8c7;
+}
+
+.danger {
+  background: #fff;
+  color: var(--danger);
+  border-color: #f0b7b1;
+}
+
+.danger:hover:not(:disabled) {
+  border-color: var(--danger);
+}
+
+.compact {
+  min-height: 34px;
+  padding: 0 12px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.shell {
+  display: grid;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: #ecfdf3;
+  color: #027a48;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.badge.warn {
+  background: #fff7ed;
+  color: var(--warning);
+}
+
+.badge.error {
+  background: #fff1f0;
+  color: var(--danger);
+}
+
+.config-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.config-panel .panel-title {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.auth-panel {
+  max-width: 520px;
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  min-height: 42px;
+  padding: 9px 11px;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 15%);
+}
+
+.vault-layout {
+  display: grid;
+  gap: 16px;
+}
+
+.list-panel {
+  align-self: start;
+}
+
+.entries-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.entry-card {
+  width: 100%;
+  min-height: 74px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+  text-align: left;
+}
+
+.entry-card:hover,
+.entry-card.active {
+  border-color: var(--primary);
+}
+
+.entry-title {
+  display: block;
+  color: var(--text);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.entry-meta {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 18px;
+  text-align: center;
+}
+
+.editor-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.credentials-section {
+  display: grid;
+  gap: 12px;
+}
+
+.subsection-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.subsection-title h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.credentials-list {
+  display: grid;
+  gap: 12px;
+}
+
+.credential-row {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 12px;
+}
+
+.credential-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.credential-actions button {
+  min-width: 72px;
+  flex: 0 0 auto;
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.save-action {
+  flex: 1 1 auto;
+}
+
+.delete-app-action {
+  flex: 0 0 auto;
+  min-width: 112px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  z-index: 10;
+  max-width: min(560px, calc(100vw - 32px));
+  border-radius: 8px;
+  background: #18212f;
+  color: #fff;
+  padding: 12px 14px;
+  box-shadow: 0 18px 36px rgb(24 33 47 / 20%);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgb(24 33 47 / 48%);
+}
+
+.modal {
+  width: min(520px, 100%);
+}
+
+.modal h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.warning-box {
+  margin-bottom: 16px;
+  border: 1px solid #f0b7b1;
+  border-radius: 8px;
+  background: #fff1f0;
+  color: var(--danger);
+  padding: 12px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+
+.strength-meter {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 10px;
+}
+
+.strength-meter:empty {
+  display: none;
+}
+
+.strength-bar {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e5e9f0;
+}
+
+.strength-bar-fill {
+  height: 100%;
+  width: var(--strength-percent, 0%);
+  border-radius: inherit;
+  background: var(--strength-color, var(--danger));
+  transition:
+    width 160ms ease,
+    background 160ms ease;
+}
+
+.strength-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.strength-detail,
+.strength-note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.strength-note {
+  color: var(--warning);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Desktop layout: edit this block for PC-only layout changes. */
+@media (min-width: 821px) {
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px clamp(20px, 5vw, 64px) 18px;
+  }
+
+  .topbar-actions,
+  .row-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .shell {
+    width: min(1180px, calc(100vw - 32px));
+    margin: 0 auto 40px;
+  }
+
+  .config-panel {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .vault-layout {
+    grid-template-columns: minmax(260px, 360px) 1fr;
+    align-items: start;
+  }
+
+  .editor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .credential-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    align-items: end;
+  }
+
+  .span-2 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile layout: edit this block for phone/tablet-only layout changes. */
+@media (max-width: 820px) {
+  .topbar {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px 16px 14px;
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .row-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .topbar-actions button,
+  .row-actions button {
+    flex: 1 1 140px;
+  }
+
+  .editor-actions {
+    align-items: center;
+  }
+
+  .delete-app-action {
+    flex: 0 0 148px;
+  }
+
+  .shell {
+    width: min(100% - 24px, 760px);
+    margin: 0 auto 28px;
+  }
+
+  .config-panel,
+  .vault-layout,
+  .editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .config-panel,
+  .vault-layout {
+    align-items: stretch;
+  }
+
+  .span-2 {
+    grid-column: auto;
+  }
+}

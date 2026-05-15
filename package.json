@@ -1,0 +1,17 @@
+{
+  "name": "github-pages-kv-vault",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:api": "wrangler dev --remote --port 8787",
+    "dev:api:local": "wrangler dev --local --persist-to .wrangler/state --port 8787",
+    "dev:web": "python3 -m http.server 4173 --directory docs",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "wrangler": "^4.91.0"
+  }
+}
