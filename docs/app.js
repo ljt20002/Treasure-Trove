@@ -3,6 +3,7 @@
 
   const KDF_ITERATIONS = 600000;
   const API_BASE_STORAGE_KEY = "personalVault.apiBaseUrl";
+  const DEFAULT_API_BASE_URL = "https://cangbaoge-api.1027900565.workers.dev";
   const OFFLINE_GUESSES_PER_SECOND = 100000;
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
@@ -62,7 +63,8 @@
   };
 
   window.addEventListener("DOMContentLoaded", () => {
-    elements.apiBaseInput.value = localStorage.getItem(API_BASE_STORAGE_KEY) ?? "";
+    elements.apiBaseInput.value =
+      localStorage.getItem(API_BASE_STORAGE_KEY) ?? DEFAULT_API_BASE_URL;
     bindEvents();
     connectToApi();
   });
